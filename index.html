@@ -13,21 +13,23 @@
       <a-marker type="pattern" url="pattern-marker1.patt">
   <a-entity rotation="-90 0 0">
 
-    <!-- background plane placed flat beside marker -->
+    <!-- Translucent background panel -->
     <a-plane 
       width="1.5" 
       height="1" 
-      color="#FFFFFF" 
-      position="1 0 0">
+      position="1 0 0" 
+      material="color: #FFFFFF; opacity: 0.8; transparent: true; shader: flat;">
     </a-plane>
 
-    <!-- text raised above plane and slightly forward -->
+    <!-- Multi-line text slightly above the plane -->
     <a-text 
       value="PUMP\nMODEL: PD:123\nOEM: VG\nISO - 3052-4" 
       width="1.4" 
       align="center" 
       color="#000000" 
-      position="1 0.01 0.01">  <!-- lifted in Y and nudged in Z -->
+      position="1 0.01 0.01" 
+      line-height="60"
+      wrap-count="30">
     </a-text>
 
   </a-entity>
