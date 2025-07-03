@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Multi Marker Info Display</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar.min.js"></script>
+  </head>
+  <body style="margin: 0; overflow: hidden;">
+    <a-scene embedded arjs="sourceType: webcam;" vr-mode-ui="enabled: false">
+
+      <!-- MARKER 1 -->
+      <a-marker 
+        type="pattern" 
+        url="pattern-marker1.patt"
+        emitevents="true"
+        smooth="true"
+        smoothCount="5"
+        smoothTolerance="0.01"
+        smoothThreshold="2"
+      >
+        <a-entity position="1 0 0" rotation="-90 0 0">
+          <a-plane width="1.5" height="1" color="#FFFFFF"></a-plane>
+          <a-text 
+            value="Marker 1: Info about the first marker." 
+            width="1.4" 
+            align="center" 
+            color="#000000" 
+            position="0 0.02 0">
+          </a-text>
+        </a-entity>
+      </a-marker>
+
+      <!-- MARKER 2 -->
+      <a-marker 
+        type="pattern" 
+        url="pattern-marker2.patt"
+        emitevents="true"
+        smooth="true"
+        smoothCount="5"
+        smoothTolerance="0.01"
+        smoothThreshold="2"
+      >
+        <a-entity position="1 0 0" rotation="-90 0 0">
+          <a-plane width="1.5" height="1" color="#FFEEAA"></a-plane>
+          <a-text 
+            value="Marker 2: Different paragraph content here." 
+            width="1.4" 
+            align="center" 
+            color="#000000" 
+            position="0 0.02 0">
+          </a-text>
+        </a-entity>
+      </a-marker>
+
+      <!-- MARKER 3 -->
+      <a-marker 
+        type="pattern" 
+        url="pattern-marker3.patt"
+        emitevents="true"
+        smooth="true"
+        smoothCount="5"
+        smoothTolerance="0.01"
+        smoothThreshold="2"
+      >
+        <a-entity position="1 0 0" rotation="-90 0 0">
+          <a-plane width="1.5" height="1" color="#D0F0FF"></a-plane>
+          <a-text 
+            value="Marker 3: Final marker with its own message." 
+            width="1.4" 
+            align="center" 
+            color="#000000" 
+            position="0 0.02 0">
+          </a-text>
+        </a-entity>
+      </a-marker>
+
+      <a-entity camera></a-entity>
+    </a-scene>
+  </body>
+</html>
