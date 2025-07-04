@@ -20,24 +20,17 @@
                 smooth="true"
                 smoothCount="5"
                 smoothTolerance="0.01"
-                smoothThreshold="2">
-        <a-entity rotation="-90 0 0">
-          <a-plane 
-            width="1.5" 
-            height="1" 
-            position="1 0 0" 
-            material="color: #FFFFFF; opacity: 0.85; transparent: true; shader: flat;">
+                smoothThreshold="2"
+        >
+        <a-entity position="1 0 0" rotation="-90 0 0">
+          <a-plane width="1.5" height="1" color="#FFFFFF"> 
           </a-plane>
-
           <a-text 
-            value="PUMP\nMODEL: PD:123\nOEM: VG\nISO - 3052-4" 
+            value="Marker 1: Info about the first marker." 
             width="1.4" 
             align="center" 
             color="#000000" 
-            position="1 0.1 0.01"
-            line-height="60"
-            wrap-count="30"
-            baseline="center">
+            position="0 0.02 0">
           </a-text>
         </a-entity>
       </a-marker>
