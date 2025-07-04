@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>3 Marker WebAR Demo</title>
+    <title>3 Marker AR Demo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar.min.js"></script>
   </head>
   <body style="margin: 0; overflow: hidden;">
     <a-scene embedded arjs="sourceType: webcam;" renderer="logarithmicDepthBuffer: true;">
-
+      
       <!-- Assets -->
       <a-assets>
-        <a-asset-item id="testModel" src="model.glb"></a-asset-item> <!-- Replace with your model -->
+        <a-asset-item id="testModel" src="model.glb"></a-asset-item> <!-- Your model file -->
       </a-assets>
 
-      <!-- MARKER 1: Text Panel -->
+      <!-- MARKER 1: Text Info Panel -->
       <a-marker type="pattern" url="pattern-marker1.patt"
                 emitevents="true"
                 smooth="true"
@@ -28,19 +28,22 @@
             position="1 0 0" 
             material="color: #FFFFFF; opacity: 0.85; transparent: true; shader: flat;">
           </a-plane>
+
           <a-text 
-            value="PUMP MODEL: PD:123 OEM: VG ISO - 3052-4" 
+            value="PUMP\nMODEL: PD:123\nOEM: VG\nISO - 3052-4" 
             width="1.4" 
             align="center" 
             color="#000000" 
-            position="1 0.05 0.01" 
+            position="1 0.1 0.01"
             line-height="60"
-            wrap-count="30">
+            wrap-count="30"
+            side="double"
+            baseline="center">
           </a-text>
         </a-entity>
       </a-marker>
 
-      <!-- MARKER 2: GLB Model + Text -->
+      <!-- MARKER 2: GLB Model + Label -->
       <a-marker type="pattern" url="pattern-marker2.patt"
                 emitevents="true"
                 smooth="true"
@@ -48,13 +51,19 @@
                 smoothTolerance="0.01"
                 smoothThreshold="2">
         <a-entity rotation="-90 0 0">
+
+          <!-- Label text -->
           <a-text 
-            value="Marker 2: Model Loaded" 
+            value="Model Loaded: Valve Assembly" 
             width="2" 
             align="center" 
             color="black" 
-            position="0 0.5 0.01">
+            position="0 0.2 0.01"
+            side="double"
+            baseline="center">
           </a-text>
+
+          <!-- Scaled-up GLB model -->
           <a-entity 
             gltf-model="#testModel" 
             position="0 0 0" 
@@ -64,7 +73,7 @@
         </a-entity>
       </a-marker>
 
-      <!-- MARKER 3: Just Text -->
+      <!-- MARKER 3: Instruction Text Panel -->
       <a-marker type="pattern" url="pattern-marker3.patt"
                 emitevents="true"
                 smooth="true"
@@ -72,15 +81,23 @@
                 smoothTolerance="0.01"
                 smoothThreshold="2">
         <a-entity rotation="-90 0 0">
-          <a-plane width="1.5" height="1" color="#EEEEEE" position="0 0 0"></a-plane>
+          <a-plane 
+            width="1.5" 
+            height="1" 
+            position="0 0 0" 
+            material="color: #EEEEEE; opacity: 0.85; transparent: true; shader: flat;">
+          </a-plane>
+
           <a-text 
-            value="Marker 3 Detected!\nNext Step: Open Valve" 
+            value="MARKER 3:\nOpen the bleed valve\nuntil pressure drops to zero." 
             width="1.4" 
             align="center" 
             color="#000000" 
-            position="0 0.05 0.01"
+            position="0 0.1 0.01"
             line-height="60"
-            wrap-count="30">
+            wrap-count="30"
+            side="double"
+            baseline="center">
           </a-text>
         </a-entity>
       </a-marker>
@@ -90,4 +107,3 @@
     </a-scene>
   </body>
 </html>
-
