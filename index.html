@@ -11,7 +11,7 @@
       
       <!-- Assets -->
       <a-assets>
-        <a-asset-item id="testModel" src="model.glb"></a-asset-item>
+        <a-asset-item id="testModel" src="model.glb"></a-asset-item> <!-- Your model file -->
       </a-assets>
 
       <!-- MARKER 1: Text Info Panel -->
@@ -20,9 +20,11 @@
                 smooth="true"
                 smoothCount="5"
                 smoothTolerance="0.01"
-                smoothThreshold="2">
-        <a-entity position="1 0 0" rotation="0 0 0">
-          <a-plane width="1.5" height="1" color="#FFFFFF"></a-plane>
+                smoothThreshold="2"
+        >
+        <a-entity position="1 0 0" rotation="-90 0 0">
+          <a-plane width="1.5" height="1" color="#FFFFFF"> 
+          </a-plane>
           <a-text 
             value="Marker 1: Info about the first marker." 
             width="1.4" 
@@ -40,7 +42,9 @@
                 smoothCount="5"
                 smoothTolerance="0.01"
                 smoothThreshold="2">
-        <a-entity rotation="0 0 0">
+        <a-entity rotation="-90 0 0">
+
+          <!-- Label text -->
           <a-text 
             value="Model Loaded: Valve Assembly" 
             width="2" 
@@ -50,6 +54,8 @@
             side="double"
             baseline="center">
           </a-text>
+
+          <!-- Scaled-up GLB model -->
           <a-entity 
             gltf-model="#testModel" 
             position="0 0 0" 
@@ -66,13 +72,14 @@
                 smoothCount="5"
                 smoothTolerance="0.01"
                 smoothThreshold="2">
-        <a-entity rotation="0 0 0">
+        <a-entity rotation="-90 0 0">
           <a-plane 
             width="1.5" 
             height="1" 
             position="0 0 0" 
             material="color: #EEEEEE; opacity: 0.85; transparent: true; shader: flat;">
           </a-plane>
+
           <a-text 
             value="MARKER 3:\nOpen the bleed valve\nuntil pressure drops to zero." 
             width="1.4" 
@@ -87,8 +94,8 @@
         </a-entity>
       </a-marker>
 
+      <!-- Camera -->
       <a-entity camera></a-entity>
     </a-scene>
   </body>
 </html>
-
