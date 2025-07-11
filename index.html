@@ -1,63 +1,89 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>3‑Marker WebAR Demo (auto‑oriented)</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <title>3 Marker AR Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar.min.js"></script>
-    <style>body{margin:0;overflow:hidden}</style>
   </head>
-
-  <body>
-    <a-scene embedded arjs="sourceType: webcam;" renderer="logarithmicDepthBuffer:true">
-      <!-- assets -->
+  <body style="margin: 0; overflow: hidden;">
+    <a-scene embedded arjs="sourceType: webcam;" renderer="logarithmicDepthBuffer: true;">
+      
+      <!-- Assets -->
       <a-assets>
-        <a-asset-item id="glb" src="model.glb"></a-asset-item>
+        <a-asset-item id="testModel" src="model.glb"></a-asset-item>
       </a-assets>
 
-      <!-- MARKER 1 – info panel -->
-      <a-marker type="pattern" url="pattern-marker1.patt" smooth="true">
-        <!-- make the whole group face the camera -->
-        <a-entity look-at="[camera]">
-
-          <a-plane width="1.5" height="1"
-                   material="color:#fff;opacity:0.85;transparent:true;shader:flat"
-                   position="0 0 0.01"></a-plane>
-
-          <a-text value="PUMP\nMODEL PD‑123\nOEM VG\nISO 3052‑4"
-                   width="1.4" align="center" color="#000"
-                   position="0 0 0.02"
-                   line-height="60" wrap-count="30" side="double"></a-text>
-
+      <!-- MARKER 1: Text Info Panel -->
+      <a-marker type="pattern" url="pattern-marker1.patt"
+                emitevents="true"
+                smooth="true"
+                smoothCount="5"
+                smoothTolerance="0.01"
+                smoothThreshold="2">
+        <a-entity position="1 0 0" rotation="0 0 0">
+          <a-plane width="1.5" height="1" color="#FFFFFF"></a-plane>
+          <a-text 
+            value="Marker 1: Info about the first marker." 
+            width="1.4" 
+            align="center" 
+            color="#000000" 
+            position="0 0.02 0">
+          </a-text>
         </a-entity>
       </a-marker>
 
-      <!-- MARKER 2 – model + label -->
-      <a-marker type="pattern" url="pattern-marker2.patt" smooth="true">
-        <a-entity look-at="[camera]">
-
-          <a-text value="Model Loaded: Valve" width="2" align="center"
-                   color="#000" position="0 0.2 0.02" side="double"></a-text>
-
-          <a-entity gltf-model="#glb" scale="0.6 0.6 0.6"
-                     position="0 0 0.01"></a-entity>
-
+      <!-- MARKER 2: GLB Model + Label -->
+      <a-marker type="pattern" url="pattern-marker2.patt"
+                emitevents="true"
+                smooth="true"
+                smoothCount="5"
+                smoothTolerance="0.01"
+                smoothThreshold="2">
+        <a-entity rotation="0 0 0">
+          <a-text 
+            value="Model Loaded: Valve Assembly" 
+            width="2" 
+            align="center" 
+            color="black" 
+            position="0 0.2 0.01"
+            side="double"
+            baseline="center">
+          </a-text>
+          <a-entity 
+            gltf-model="#testModel" 
+            position="0 0 0" 
+            scale="0.5 0.5 0.5" 
+            rotation="0 0 0">
+          </a-entity>
         </a-entity>
       </a-marker>
 
-      <!-- MARKER 3 – instruction panel -->
-      <a-marker type="pattern" url="pattern-marker3.patt" smooth="true">
-        <a-entity look-at="[camera]">
-
-          <a-plane width="1.5" height="1"
-                   material="color:#eee;opacity:0.85;transparent:true;shader:flat"
-                   position="0 0 0.01"></a-plane>
-
-          <a-text value="STEP 3:\nOpen bleed valve\nuntil pressure = 0"
-                   width="1.4" align="center" color="#000"
-                   position="0 0 0.02"
-                   line-height="60" wrap-count="30" side="double"></a-text>
-
+      <!-- MARKER 3: Instruction Text Panel -->
+      <a-marker type="pattern" url="pattern-marker3.patt"
+                emitevents="true"
+                smooth="true"
+                smoothCount="5"
+                smoothTolerance="0.01"
+                smoothThreshold="2">
+        <a-entity rotation="0 0 0">
+          <a-plane 
+            width="1.5" 
+            height="1" 
+            position="0 0 0" 
+            material="color: #EEEEEE; opacity: 0.85; transparent: true; shader: flat;">
+          </a-plane>
+          <a-text 
+            value="MARKER 3:\nOpen the bleed valve\nuntil pressure drops to zero." 
+            width="1.4" 
+            align="center" 
+            color="#000000" 
+            position="0 0.1 0.01"
+            line-height="60"
+            wrap-count="30"
+            side="double"
+            baseline="center">
+          </a-text>
         </a-entity>
       </a-marker>
 
@@ -65,3 +91,4 @@
     </a-scene>
   </body>
 </html>
+
