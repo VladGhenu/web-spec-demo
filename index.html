@@ -1,54 +1,64 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>3‑Marker WebAR Demo (icons now flat)</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>3‑Marker WebAR Demo (auto‑oriented)</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
     <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar.min.js"></script>
     <style>body{margin:0;overflow:hidden}</style>
   </head>
 
   <body>
-    <a-scene embedded arjs="sourceType: webcam;" renderer="logarithmicDepthBuffer: true;">
+    <a-scene embedded arjs="sourceType: webcam;" renderer="logarithmicDepthBuffer:true">
       <!-- assets -->
       <a-assets>
         <a-asset-item id="glb" src="model.glb"></a-asset-item>
       </a-assets>
 
       <!-- MARKER 1 – info panel -->
-      <a-marker type="pattern" url="pattern-marker1.patt"
-                emitevents smooth="true" smoothCount="5" smoothTolerance="0.01">
-        <a-plane width="1.5" height="1"
-                 material="color:#fff;opacity:0.85;transparent:true;shader:flat"
-                 position="0 0 0.01"  side="double"></a-plane>
+      <a-marker type="pattern" url="pattern-marker1.patt" smooth="true">
+        <!-- make the whole group face the camera -->
+        <a-entity look-at="[camera]">
 
-        <a-text value="PUMP\nMODEL PD‑123\nOEM VG\nISO 3052‑4"
-                 width="1.4" align="center" color="#000"
-                 position="0 0 0.02" line-height="60" wrap-count="30"
-                 side="double" baseline="center"></a-text>
+          <a-plane width="1.5" height="1"
+                   material="color:#fff;opacity:0.85;transparent:true;shader:flat"
+                   position="0 0 0.01"></a-plane>
+
+          <a-text value="PUMP\nMODEL PD‑123\nOEM VG\nISO 3052‑4"
+                   width="1.4" align="center" color="#000"
+                   position="0 0 0.02"
+                   line-height="60" wrap-count="30" side="double"></a-text>
+
+        </a-entity>
       </a-marker>
 
       <!-- MARKER 2 – model + label -->
-      <a-marker type="pattern" url="pattern-marker2.patt"
-                emitevents smooth="true" smoothCount="5" smoothTolerance="0.01">
-        <a-text value="Model Loaded: Valve" width="2" align="center" color="#000"
-                position="0 0.2 0.02" side="double" baseline="center"></a-text>
+      <a-marker type="pattern" url="pattern-marker2.patt" smooth="true">
+        <a-entity look-at="[camera]">
 
-        <a-entity gltf-model="#glb" scale="0.5 0.5 0.5"
-                  position="0 0 0.01" rotation="0 0 0"></a-entity>
+          <a-text value="Model Loaded: Valve" width="2" align="center"
+                   color="#000" position="0 0.2 0.02" side="double"></a-text>
+
+          <a-entity gltf-model="#glb" scale="0.6 0.6 0.6"
+                     position="0 0 0.01"></a-entity>
+
+        </a-entity>
       </a-marker>
 
       <!-- MARKER 3 – instruction panel -->
-      <a-marker type="pattern" url="pattern-marker3.patt"
-                emitevents smooth="true" smoothCount="5" smoothTolerance="0.01">
-        <a-plane width="1.5" height="1"
-                 material="color:#eee;opacity:0.85;transparent:true;shader:flat"
-                 position="0 0 0.01" side="double"></a-plane>
+      <a-marker type="pattern" url="pattern-marker3.patt" smooth="true">
+        <a-entity look-at="[camera]">
 
-        <a-text value="STEP 3:\nOpen bleed valve\nuntil pressure = 0"
-                 width="1.4" align="center" color="#000"
-                 position="0 0 0.02" line-height="60" wrap-count="30"
-                 side="double" baseline="center"></a-text>
+          <a-plane width="1.5" height="1"
+                   material="color:#eee;opacity:0.85;transparent:true;shader:flat"
+                   position="0 0 0.01"></a-plane>
+
+          <a-text value="STEP 3:\nOpen bleed valve\nuntil pressure = 0"
+                   width="1.4" align="center" color="#000"
+                   position="0 0 0.02"
+                   line-height="60" wrap-count="30" side="double"></a-text>
+
+        </a-entity>
       </a-marker>
 
       <a-entity camera></a-entity>
